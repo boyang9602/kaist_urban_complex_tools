@@ -22,7 +22,7 @@ def convert(filepath, outpath, timestamp, compression='binary_compressed'):
     else:
         raise "Unsupported file extension. It has to be 'txt' or 'bin'"
     scan = scan.reshape(-1, 4)
-    intensities = (scan[:, -1] * 255).astype(np.uint8)
+    intensities = scan[:, -1].astype(np.uint8)
     timestamps = np.ones_like(intensities, dtype=np.float64) * timestamp
     md = {'version': .7,
           'fields': ['x', 'y', 'z', 'intensity', 'timestamp'],
